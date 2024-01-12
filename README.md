@@ -73,7 +73,7 @@ Now open up your local host 0.0.0.0:8080
 
 	
 ## 3. Create ECR repo to store/save docker image
-    - Save the URI: 136566696263.dkr.ecr.us-east-1.amazonaws.com/mlproject
+    - Save the URI: 597875223297.dkr.ecr.us-east-1.amazonaws.com/mlproject
 
 	
 ## 4. Create EC2 machine (Ubuntu) 
@@ -99,6 +99,42 @@ Now open up your local host 0.0.0.0:8080
 	
 # 6. Configure EC2 as self-hosted runner:
     setting>actions>runner>new self hosted runner> choose os> then run command one by one
+
+	# Download on EC2 connect
+
+
+	# Create a folder
+
+	$ mkdir actions-runner && cd actions-runner
+	
+	# Download the latest runner package
+	
+	$ curl -o actions-runner-linux-x64-2.311.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.311.0/actions-runner-linux-x64-2.311.0.tar.gz
+	
+	# Optional: Validate the hash
+	$ echo "29fc8cf2dab4c195bb147384e7e2c94cfd4d4022c793b346a6175435265aa278  actions-runner-linux-x64-2.311.0.tar.gz" | shasum -a 256 -c
+	
+	# Extract the installer
+	
+	$ tar xzf ./actions-runner-linux-x64-2.311.0.tar.gz
+	
+	# Configure
+	
+	# Create the runner and start the configuration experience
+	
+	$ ./config.sh --url https://github.com/ubaid-shah/mlops_project2 --token ALNT6S2YZNOXSOJED7D3CO3FUFJ4I
+	
+	# Last step, run it!
+	
+	$ ./run.sh
+	
+	# Using your self-hosted runner
+	
+	# Use this YAML in your workflow file for each job
+	
+	runs-on: self-hosted
+
+
 
 
 # 7. Setup github secrets:

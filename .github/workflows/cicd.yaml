@@ -4,8 +4,11 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
+    paths-ignore: |
       - 'README.md'
+      - 'mlproj/'
+      - 'mlproject_accessKeys.csv'
+      - 'mlproj.pem'
 
 permissions:
   id-token: write
