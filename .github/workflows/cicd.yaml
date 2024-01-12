@@ -91,7 +91,7 @@ jobs:
          
       - name: Stop and remove container if running
         run: |
-         docker ps -q --filter "name=mlproject" | grep -q . && docker stop cnncls && docker rm -fv mlproject
+         docker ps -q --filter "name=mlproject" | grep -q . && docker stop mlproject && docker rm -fv mlproject
        
       - name: Run Docker Image to serve users
         run: |
